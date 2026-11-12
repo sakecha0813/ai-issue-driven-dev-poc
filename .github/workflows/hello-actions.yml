@@ -1,0 +1,19 @@
+
+name: Hello GitHub Actions
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: echo "GitHub Actions is working!"
+
+      - name: Show Java version
+        run: java -version
