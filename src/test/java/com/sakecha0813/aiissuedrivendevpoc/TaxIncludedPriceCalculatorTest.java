@@ -12,7 +12,8 @@ class TaxIncludedPriceCalculatorTest {
             "1000, 0.10, 1100",
             "999, 0.10, 1099",
             "105, 0.10, 116",
-            "0, 0.10, 0"
+            "0, 0.10, 0",
+            "1000, 0, 1000"
     })
     void calculatesTaxIncludedPrice(int taxExclusivePrice, String taxRate, int expected) {
         assertEquals(expected, TaxIncludedPriceCalculator.calculate(
