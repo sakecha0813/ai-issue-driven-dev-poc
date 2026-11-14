@@ -25,6 +25,33 @@ The API endpoint is `GET /api/prices/tax-included?price=1000&taxRate=0.10`.
 It returns `{ "taxIncludedPrice": 1100 }` and rejects invalid or negative
 inputs with HTTP 400.
 
+### Docker
+
+Build and run the production image from the repository root:
+
+```sh
+docker build -t price-calculator:local .
+docker run --rm -p 3000:3000 --name price-calculator price-calculator:local
+```
+
+Open <http://localhost:3000/> in a browser. In another terminal, check the
+API and health endpoint:
+
+```sh
+curl 'http://localhost:3000/api/prices/tax-included?price=1000&taxRate=0.10'
+curl http://localhost:3000/health
+```
+
+The responses are `{"taxIncludedPrice":1100}` and `{"status":"ok"}`.
+Stop the container with `docker stop price-calculator` or Ctrl+C in the
+terminal running it.
+
+The multi-stage image builds both workspaces, installs only backend production
+dependencies, and runs the compiled Express server as a non-root user. The
+final image contains those dependencies, the compiled backend, and the built
+frontend. It does not run the Vite development server. To develop without
+Docker, use the `npm ci` and `npm run dev` instructions above.
+
 ### End-to-end tests (Playwright)
 
 The E2E tests run in Chromium against the real React app and Express API
