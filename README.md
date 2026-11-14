@@ -24,3 +24,19 @@ npm test
 The API endpoint is `GET /api/prices/tax-included?price=1000&taxRate=0.10`.
 It returns `{ "taxIncludedPrice": 1100 }` and rejects invalid or negative
 inputs with HTTP 400.
+
+### End-to-end tests (Playwright)
+
+The E2E tests run in Chromium against the real React app and Express API
+(no mocks). Install the browser once, then run the tests from the repository
+root; Playwright starts the API (port 3001) and the frontend (port 5173)
+automatically:
+
+```sh
+npx playwright install chromium
+npm run test:e2e
+```
+
+Failed tests keep screenshots and traces in `test-results/`. When `CI` is set,
+an HTML report is written to `playwright-report/` and existing servers are not
+reused. On Linux CI, use `npx playwright install --with-deps chromium`.

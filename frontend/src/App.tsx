@@ -53,7 +53,7 @@ function App() {
   return (
     <main className="calculator">
       <h1>税込価格計算</h1>
-      <form onSubmit={calculate}>
+      <form onSubmit={calculate} noValidate>
         <label htmlFor="price">税抜価格</label>
         <input
           id="price"
