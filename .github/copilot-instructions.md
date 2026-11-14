@@ -1,23 +1,66 @@
 
-# Development Instructions
+# Copilot Development Instructions
 
-## Technology
+## Project Overview
+
+This repository is a proof of concept for
+AI-driven issue-based development.
+
+## Technology Stack
+
+### Existing Java PoC
 - Java 21
 - Maven
 - JUnit 5
-- UTF-8
+
+### New Web Application
+- React + TypeScript + Vite
+- Node.js + TypeScript + Express
+- npm workspaces
+- Vitest
+- Supertest
+
+## Repository Structure
+
+- frontend/: React application
+- backend/: Node.js REST API
+- src/: Existing Java PoC
+- .github/workflows/: CI/CD workflows
 
 ## Implementation Rules
+
 - Follow the requirements in the GitHub Issue.
 - Do not implement unspecified features.
 - Keep the implementation simple.
-- Add unit tests for all new business logic.
-- Do not remove existing tests to make tests pass.
-- Do not modify GitHub Actions workflows unless requested.
-- Do not add external dependencies unless necessary.
+- Use strict TypeScript settings.
+- Avoid using `any`.
+- Add unit tests for business logic.
+- Add API tests for backend endpoints.
+- Do not delete or modify existing Java PoC code.
+- Do not introduce a database unless requested.
+
+## Security Rules
+
+- Never hardcode credentials or secrets.
+- Do not modify GitHub Actions workflows.
+- Do not modify repository permissions.
+- Do not add AWS resources or deployment configuration.
+- Do not modify authentication settings.
 
 ## Verification
-- Run `mvn test` after implementation.
-- Report test results in the pull request.
-- Explain any tests that could not be executed.
-- If requirements are ambiguous, ask for clarification.
+
+For the TypeScript application:
+- Run `npm ci` when a lockfile exists.
+- Run `npm run build`.
+- Run `npm test`.
+
+For the existing Java application:
+- Preserve the existing tests and build configuration.
+
+## Pull Request Requirements
+
+Include:
+- Summary of changes
+- Files added or modified
+- Test results
+- Known limitations
