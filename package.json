@@ -8,9 +8,11 @@
   "scripts": {
     "build": "npm run build --workspace backend && npm run build --workspace frontend",
     "test": "vitest run",
+    "test:e2e": "playwright test",
     "dev": "concurrently -k -n api,web \"npm:dev --workspace backend\" \"npm:dev --workspace frontend\""
   },
   "devDependencies": {
+    "@playwright/test": "1.65.1",
     "@types/node": "22.20.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
